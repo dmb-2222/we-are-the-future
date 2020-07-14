@@ -1,0 +1,12 @@
+.App {
+  /* margin-left: 1%; */
+  /* margin-right: 3%; */
+
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+}

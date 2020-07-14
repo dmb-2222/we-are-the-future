@@ -1,0 +1,1 @@
+export const getItemsSelector = store => store.items;

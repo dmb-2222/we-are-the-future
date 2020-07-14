@@ -1,0 +1,14 @@
+.items{
+    width: 780px;
+    margin: 0 auto;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.title{
+    font-size: 16px;
+    
+}
+.line{
+    border-bottom: 1px solid rgb(190, 181, 181);
+}
