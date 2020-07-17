@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/items/itemsOperations";
+import FormInput from '../UI/FormInput'
 
 import style from "./ModalForm.module.css";
 
@@ -31,43 +32,20 @@ const ModalForm = ({ onCloseModal}) => {
     clear();
     onCloseModal();
   };
-
+  const { image, title, price, description } = state;
   return (
     <div className={style.overlay} data-modal="modal" name="modal">
       <form onSubmit={handleSubmite} className={style.modal}>
         <h3>Add new hot-dog</h3>
-        <input
-          type="text"
-          placeholder="Price"
-          className={style.inputFormAdd}
-          name="price"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Title"
-          className={style.inputFormAdd}
-          name="title"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          className={style.inputFormAdd}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="image"
-          placeholder="Image"
-          className={style.inputFormAdd}
-          onChange={handleChange}
-          required
-        />
+        <FormInput
+        image={image}
+        title={title}
+        price={price}
+        description={description}
+        handleChange={handleChange}
+        styleEdit={style.inputFormAdd}
+        isAddForm={true}
+      />
         <div>
           <button
             className={style.btnForm}

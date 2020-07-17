@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem, updateItem } from "../../redux/items/itemsOperations";
 import { getItemsSelector } from "../../redux/items/itemsSelectors";
+import FormInput from "../UI/FormInput";
 import style from "./EditForm.module.css";
 
 const INITIAL_STATE = {
@@ -23,7 +24,7 @@ const EditFrorm = ({ id, closeEdit }) => {
   };
   const handleSubmite = (e) => {
     e.preventDefault();
-    closeEdit()
+    closeEdit();
     dispatch(updateItem(state));
   };
   const items = useSelector(getItemsSelector);
@@ -31,52 +32,29 @@ const EditFrorm = ({ id, closeEdit }) => {
     setState(items.find((item) => item.id === id));
   }, [id, items]);
 
-
-
   const wrapperRef = useRef(null);
   useEffect(() => {
-    const handleClickOutside =(e)=> {
+    const handleClickOutside = (e) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
-        closeEdit()
+        closeEdit();
       }
-    }
+    };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [wrapperRef, closeEdit]);
-
+  const { image, title, price, description } = state;
   return (
     <form onSubmit={handleSubmite} ref={wrapperRef}>
-      <input
-        type="text"
-        name="image"
-        className={style.inputFormAdd}
-        onChange={handleChange}
-        value={state.image}
+      <FormInput
+        image={image}
+        title={title}
+        price={price}
+        description={description}
+        handleChange={handleChange}
+        styleEdit={style.inputFormAdd}
       />
-      <input
-        type="text"
-        className={style.inputFormAdd}
-        name="title"
-        onChange={handleChange}
-        value={state.title}
-      />
-      <input
-        type="text"
-        className={style.inputFormAdd}
-        name="price"
-        onChange={handleChange}
-        value={state.price}
-      />
-      <textarea
-        type="text"
-        name="description"
-        className={style.inputFormAdd}
-        onChange={handleChange}
-        value={state.description}
-      />
-
       <div>
         <button type="submit" className={style.btnEdit}>
           Upgrate
