@@ -3,7 +3,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 // import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 // import { taskReducer } from "./task/taskReducer";
-import {itemsReducer} from './items/itemsReducer'
+import { itemsReducer } from "./items/itemsReducer";
+import loadingReducer from "./loading/loadingReducer";
 
 import ReduxThunk from "redux-thunk";
 
@@ -17,6 +18,7 @@ const middleware = [ReduxThunk];
 
 const rootReducer = combineReducers({
   items: itemsReducer,
+  isLoading: loadingReducer,
 });
 // const persisterReducer = persistReducer( rootReducer);
 

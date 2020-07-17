@@ -1,5 +1,5 @@
 .items{
-    width: 780px;
+    max-width: 780px;
     margin: 0 auto;
     padding-left: 2%;
     padding-right: 2%;
@@ -11,4 +11,13 @@
 }
 .line{
     border-bottom: 1px solid rgb(190, 181, 181);
+}
+
+.itemBox{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.item{
+    width: 180px;
 }

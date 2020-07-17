@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addItems } from "../../redux/items/itemsAction";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/items/itemsOperations";
 
 import style from "./ModalForm.module.css";
 
 const INITIAL_STATE = {
-  name: "",
+  price: "",
   image: "",
   title: "",
   description: "",
 };
 
-const ModalForm = ({ onCloseModal }) => {
+const ModalForm = ({ onCloseModal}) => {
   const [state, setState] = useState(INITIAL_STATE);
 
   const handleChange = ({ target }) => {
@@ -27,9 +27,9 @@ const ModalForm = ({ onCloseModal }) => {
 
   const handleSubmite = (e) => {
     e.preventDefault();
-    dispatch(addItems(state));
+    dispatch(addItem(state));
     clear();
-    onCloseModal()
+    onCloseModal();
   };
 
   return (
@@ -38,9 +38,9 @@ const ModalForm = ({ onCloseModal }) => {
         <h3>Add new hot-dog</h3>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Price"
           className={style.inputFormAdd}
-          name="name"
+          name="price"
           onChange={handleChange}
           required
         />
@@ -76,10 +76,7 @@ const ModalForm = ({ onCloseModal }) => {
           >
             No thanks
           </button>
-          <button
-            type="submit"
-            className={style.btnForm}
-          >
+          <button type="submit" className={style.btnForm}>
             Add
           </button>
         </div>

@@ -1,0 +1,18 @@
+.img {
+  width: 180px;
+  height: auto;
+}
+.containerItem:hover .btnEdit {
+  opacity: 1;
+}
+.btnEdit {
+  text-align: center;
+  background-color: rgb(235, 235, 241);
+  width: 180px;
+  font-size: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  opacity: 0;
+  margin-bottom: 5px;
+}
+
